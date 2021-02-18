@@ -1,23 +1,33 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity"></script>
-<script>
-const threshold = 0.9;
-toxicity.load(threshold).then(model => {
-    const sentences = ['you suck'];
-    model.classify(sentences).then(predictions => {
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity"></script>
+
+  <script>
+    const threshold = 0.9;
+    toxicity.load(threshold).then(model => {
+      const sentences = ['you suck'];
+      model.classify(sentences).then(predictions => {
         console.log(predictions);
-        for(i=0; i<7; i++){
-            if(predictions[i].results[0].match){
-                console.log(predictions[i].label +
-                            " was found with probability of " +
-                            predictions[i].results[0].probabilities[1]);
-            }
+        for (i = 0; i < 7; i++) {
+          if (predictions[i].results[0].match) {
+            console.log(predictions[i].label +
+              " was found with probability of " +
+              predictions[i].results[0].probabilities[1]);
+          }
         }
+      });
     });
-});
-</script>
+  </script>
 </head>
-<body></body>
+<body>
+
+</body>
 </html>
